@@ -4,7 +4,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>იოს პირველი საიტი</title>
+<title>იო-ს ქვიზი</title>
 
 <style>
 * {
@@ -14,520 +14,410 @@
 body {
     margin: 0;
     min-height: 100vh;
-    display: flex;
-    justify-content: center;
-    align-items: center;
     font-family: Arial, sans-serif;
-    background: linear-gradient(135deg, #667eea, #764ba2);
-    transition: 0.4s;
-    padding: 90px 15px 30px;
+    background: linear-gradient(135deg, #111827, #312e81, #581c87);
+    color: white;
+    padding: 25px 15px;
 }
 
 .container {
-    background: white;
-    padding: 35px;
-    border-radius: 22px;
-    text-align: center;
     width: 100%;
-    max-width: 430px;
-    box-shadow: 0 15px 40px rgba(0,0,0,0.25);
-    transition: 0.4s;
+    max-width: 850px;
+    margin: 35px auto;
+}
+
+header {
+    text-align: center;
+    margin-bottom: 30px;
+}
+
+.logo {
+    font-size: 42px;
+    margin-bottom: 8px;
 }
 
 h1 {
-    color: #764ba2;
-    font-size: 25px;
+    font-size: 34px;
+    margin: 8px 0;
 }
 
-h2 {
-    color: #764ba2;
+.subtitle {
+    color: #c4b5fd;
+    font-size: 15px;
+}
+
+.card {
+    background: rgba(255,255,255,0.09);
+    border: 1px solid rgba(255,255,255,0.15);
+    backdrop-filter: blur(15px);
+    border-radius: 20px;
+    padding: 28px;
+    box-shadow: 0 15px 40px rgba(0,0,0,0.2);
+}
+
+.hidden {
+    display: none !important;
+}
+
+.buttons {
+    display: flex;
+    gap: 14px;
+    flex-wrap: wrap;
     margin-top: 25px;
 }
 
-.clock {
-    position: fixed;
-    top: 20px;
-    left: 20px;
-    background: rgba(255,255,255,0.2);
+button {
+    border: none;
+    border-radius: 12px;
+    padding: 14px 20px;
+    font-size: 15px;
+    font-weight: bold;
+    cursor: pointer;
+    transition: 0.2s;
+}
+
+button:hover {
+    transform: translateY(-2px);
+    filter: brightness(1.1);
+}
+
+.primary {
+    background: #8b5cf6;
     color: white;
-    padding: 12px 18px;
-    border-radius: 15px;
-    font-size: 17px;
-    backdrop-filter: blur(10px);
+}
+
+.secondary {
+    background: #334155;
+    color: white;
+}
+
+.green {
+    background: #16a34a;
+    color: white;
+}
+
+.red {
+    background: #dc2626;
+    color: white;
+}
+
+.home-btn {
+    width: 100%;
+    padding: 19px;
+    font-size: 18px;
 }
 
 input, select {
     width: 100%;
-    padding: 12px;
-    margin: 10px 0;
-    border: 2px solid #ddd;
+    padding: 14px;
+    margin: 8px 0 18px;
+    border: 1px solid #475569;
     border-radius: 10px;
-    font-size: 16px;
+    background: #1e293b;
+    color: white;
+    font-size: 15px;
+    outline: none;
 }
 
 input:focus, select:focus {
-    outline: none;
-    border-color: #764ba2;
+    border-color: #a78bfa;
 }
 
-input[type="color"] {
-    height: 45px;
-    cursor: pointer;
+label {
+    font-weight: bold;
+    font-size: 14px;
 }
 
-input[type="range"] {
-    cursor: pointer;
+h2 {
+    margin-top: 0;
 }
 
-button {
+.question-item {
+    background: rgba(255,255,255,0.07);
+    border: 1px solid rgba(255,255,255,0.1);
+    padding: 16px;
+    border-radius: 12px;
+    margin-top: 12px;
+}
+
+.question-item p {
+    margin-top: 0;
+    font-weight: bold;
+}
+
+.question-item small {
+    color: #c4b5fd;
+    line-height: 1.8;
+}
+
+.question-item button {
+    margin-top: 12px;
+    padding: 9px 14px;
+}
+
+.answer {
+    display: block;
     width: 100%;
-    padding: 12px;
-    margin-top: 10px;
-    border: none;
-    border-radius: 10px;
-    background: linear-gradient(135deg, #667eea, #764ba2);
+    text-align: left;
+    background: #334155;
     color: white;
-    font-size: 16px;
-    cursor: pointer;
+    margin: 12px 0;
+    padding: 17px;
+    border: 2px solid transparent;
+}
+
+.answer:hover {
+    background: #475569;
+}
+
+.answer.correct {
+    background: #166534;
+    border-color: #4ade80;
+}
+
+.answer.wrong {
+    background: #991b1b;
+    border-color: #f87171;
+}
+
+.answer:disabled {
+    cursor: default;
+    opacity: 1;
+}
+
+.progress {
+    height: 9px;
+    background: #334155;
+    border-radius: 20px;
+    overflow: hidden;
+    margin: 20px 0;
+}
+
+.progress-bar {
+    height: 100%;
+    background: #a78bfa;
+    width: 0%;
     transition: 0.3s;
 }
 
-button:hover {
-    transform: scale(1.03);
-    opacity: 0.9;
-}
-
-#darkButton {
-    position: fixed;
-    top: 20px;
-    right: 20px;
-    width: auto;
-    padding: 12px 18px;
-    background: #222;
-}
-
-.label {
-    display: block;
-    margin-top: 15px;
+#feedback {
+    margin-top: 18px;
     font-weight: bold;
-    color: #764ba2;
+    min-height: 24px;
 }
 
-#result {
-    margin-top: 20px;
-    font-size: 18px;
+.score {
+    font-size: 55px;
     font-weight: bold;
-    overflow-wrap: anywhere;
+    color: #c4b5fd;
+    text-align: center;
+    margin: 20px;
 }
 
-.result-line {
-    animation: appear 0.4s ease both;
-    margin: 5px 0;
+.center {
+    text-align: center;
 }
 
-@keyframes appear {
-    from {
-        opacity: 0;
-        transform: translateY(15px);
+.note {
+    color: #cbd5e1;
+    font-size: 13px;
+    margin-top: 18px;
+}
+
+@media(max-width: 550px) {
+    h1 {
+        font-size: 27px;
     }
-    to {
-        opacity: 1;
-        transform: translateY(0);
+
+    .card {
+        padding: 20px;
     }
-}
 
-.clear {
-    background: #e74c3c;
-}
-
-.copy {
-    background: #16a085;
-}
-
-body.dark {
-    background: linear-gradient(135deg, #141e30, #243b55);
-}
-
-body.dark .container {
-    background: #222;
-}
-
-body.dark h1,
-body.dark h2,
-body.dark .label {
-    color: #bb86fc;
-}
-
-body.dark input,
-body.dark select {
-    background: #333;
-    color: white;
-    border-color: #555;
-}
-
-body.dark input::placeholder {
-    color: #bbb;
-}
-
-body.dark #result {
-    color: #bb86fc;
-}
-
-body.dark .clock {
-    background: rgba(0,0,0,0.3);
-}
-
-#message {
-    margin-top: 12px;
-    font-size: 14px;
-    color: #16a085;
-}
-
-/* ქვიზის დიზაინი */
-
-.quiz-section {
-    border-top: 2px solid #eee;
-    margin-top: 35px;
-    padding-top: 15px;
-}
-
-.question-card {
-    background: #f3f0fa;
-    color: #333;
-    padding: 15px;
-    border-radius: 12px;
-    margin-top: 12px;
-    text-align: left;
-}
-
-.question-card button {
-    background: #e74c3c;
-    padding: 8px;
-    font-size: 14px;
-}
-
-.quiz-option {
-    background: #667eea;
-    text-align: left;
-}
-
-.quiz-option:disabled {
-    opacity: 0.8;
-    cursor: default;
-}
-
-.quiz-feedback {
-    margin-top: 15px;
-    font-weight: bold;
-}
-
-.quiz-small {
-    font-size: 14px;
-    color: #777;
-}
-
-body.dark .question-card {
-    background: #333;
-    color: white;
-}
-
-body.dark .quiz-small {
-    color: #ccc;
-}
-
-body.dark .quiz-section {
-    border-color: #555;
-}
-
-body.dark .quiz-question {
-    color: #bb86fc;
+    .buttons button {
+        width: 100%;
+    }
 }
 </style>
 </head>
 
 <body>
 
-<div class="clock">
-    <div id="time">00:00:00</div>
-    <div id="date"></div>
-</div>
-
-<button id="darkButton" onclick="toggleDarkMode()">
-    🌙 Dark Mode
-</button>
-
 <div class="container">
 
-    <h1>მოგესალმებით ჩემს საიტზე! 🚀</h1>
+<header>
+    <div class="logo">🧠</div>
+    <h1>იო-ს ქვიზი</h1>
+    <p class="subtitle">შექმენი საკუთარი ქვიზი და გამოსცადე შენი ცოდნა!</p>
+</header>
 
-    <p>შექმენი შენი საკუთარი ტექსტი!</p>
+<!-- მთავარი გვერდი -->
+<section id="home" class="card center">
+    <h2>მოგესალმები! 👋</h2>
+    <p class="subtitle">რისი გაკეთება გინდა?</p>
 
-    <input type="text" id="userInput" placeholder="შეიყვანეთ ტექსტი">
+    <div class="buttons" style="flex-direction:column">
+        <button class="primary home-btn" onclick="showPage('editor')">
+            ✏️ ქვიზის შექმნა
+        </button>
 
-    <input type="number" id="count" placeholder="რამდენჯერ დავბეჭდო?" min="1" max="100">
-
-    <label class="label">🌈 ტექსტის ფერი</label>
-    <input type="color" id="textColor" value="#764ba2">
-
-    <label class="label">
-        🔠 ტექსტის ზომა:
-        <span id="sizeValue">18</span> px
-    </label>
-
-    <input type="range" id="textSize" min="12" max="40" value="18">
-
-    <button onclick="repeatText()">🖨️ ბეჭდვა</button>
-    <button class="copy" onclick="copyText()">📋 ტექსტის კოპირება</button>
-    <button class="clear" onclick="clearText()">🧹 გასუფთავება</button>
-
-    <div id="result"></div>
-    <div id="message"></div>
-
-
-    <!-- ქვიზის შემქმნელი -->
-
-    <div class="quiz-section">
-
-        <h2>🧠 ჩემი ქვიზი</h2>
-        <p>შექმენი საკუთარი კითხვები და ითამაშე!</p>
-
-        <div id="creator">
-
-            <label class="label">❓ შეიყვანე კითხვა</label>
-            <input type="text" id="questionInput" placeholder="მაგ: რომელია საქართველოს დედაქალაქი?">
-
-            <label class="label">A პასუხი</label>
-            <input type="text" id="answerA" placeholder="პირველი პასუხი">
-
-            <label class="label">B პასუხი</label>
-            <input type="text" id="answerB" placeholder="მეორე პასუხი">
-
-            <label class="label">C პასუხი</label>
-            <input type="text" id="answerC" placeholder="მესამე პასუხი">
-
-            <label class="label">D პასუხი</label>
-            <input type="text" id="answerD" placeholder="მეოთხე პასუხი">
-
-            <label class="label">✅ აირჩიე სწორი პასუხი</label>
-
-            <select id="correctAnswer">
-                <option value="0">A პასუხი</option>
-                <option value="1">B პასუხი</option>
-                <option value="2">C პასუხი</option>
-                <option value="3">D პასუხი</option>
-            </select>
-
-            <button onclick="addQuestion()">➕ კითხვის დამატება</button>
-
-            <p class="quiz-small" id="questionCount">
-                დამატებულია 0 კითხვა
-            </p>
-
-            <div id="questionList"></div>
-
-            <button onclick="startQuiz()">🎮 ქვიზის დაწყება</button>
-
-        </div>
-
-        <!-- თამაშის ნაწილი -->
-
-        <div id="game" style="display:none;">
-
-            <p id="progress" class="quiz-small"></p>
-
-            <h3 id="gameQuestion" class="quiz-question"></h3>
-
-            <div id="gameAnswers"></div>
-
-            <div id="feedback" class="quiz-feedback"></div>
-
-            <button id="nextButton" onclick="nextQuestion()" style="display:none;">
-                შემდეგი კითხვა ➡️
-            </button>
-
-        </div>
-
-        <!-- შედეგები -->
-
-        <div id="quizResult" style="display:none;">
-
-            <h2>🏆 ქვიზი დასრულდა!</h2>
-
-            <h3 id="scoreText"></h3>
-
-            <p id="resultMessage"></p>
-
-            <button onclick="restartQuiz()">🔄 თავიდან თამაში</button>
-            <button class="clear" onclick="backToCreator()">✏️ კითხვების შეცვლა</button>
-
-        </div>
-
+        <button class="green home-btn" onclick="startQuiz()">
+            🎮 ქვიზის თამაში
+        </button>
     </div>
 
-</div>
+    <p class="note">შენი კითხვები ავტომატურად ინახება.</p>
+</section>
 
+<!-- კითხვების შექმნა -->
+<section id="editor" class="card hidden">
+
+    <h2>✏️ ქვიზის შექმნა</h2>
+    <p class="subtitle">შექმენი კითხვები და მიუთითე სწორი პასუხი.</p>
+
+    <label>კითხვა</label>
+    <input id="questionInput" type="text" placeholder="მაგალითად: რომელია საქართველოს დედაქალაქი?">
+
+    <label>პასუხი A</label>
+    <input id="answerA" type="text" placeholder="პირველი პასუხი">
+
+    <label>პასუხი B</label>
+    <input id="answerB" type="text" placeholder="მეორე პასუხი">
+
+    <label>პასუხი C</label>
+    <input id="answerC" type="text" placeholder="მესამე პასუხი">
+
+    <label>პასუხი D</label>
+    <input id="answerD" type="text" placeholder="მეოთხე პასუხი">
+
+    <label>სწორი პასუხი</label>
+    <select id="correctAnswer">
+        <option value="0">A</option>
+        <option value="1">B</option>
+        <option value="2">C</option>
+        <option value="3">D</option>
+    </select>
+
+    <button class="primary" style="width:100%" onclick="addQuestion()">
+        ➕ კითხვის დამატება
+    </button>
+
+    <div style="margin-top:30px">
+        <h3>ჩემი კითხვები (<span id="questionCount">0</span>)</h3>
+        <div id="questionList"></div>
+    </div>
+
+    <div class="buttons">
+        <button class="green" onclick="startQuiz()">🎮 ქვიზის დაწყება</button>
+        <button class="secondary" onclick="showPage('home')">⬅ მთავარი გვერდი</button>
+    </div>
+
+    <p class="note">კითხვები ავტომატურად ინახება შენს ბრაუზერში.</p>
+</section>
+
+<!-- თამაშის გვერდი -->
+<section id="game" class="card hidden">
+
+    <div class="row" style="display:flex;justify-content:space-between;gap:10px">
+        <span id="questionNumber">კითხვა 1</span>
+        <span id="scoreDisplay">ქულა: 0</span>
+    </div>
+
+    <div class="progress">
+        <div class="progress-bar" id="progressBar"></div>
+    </div>
+
+    <h2 id="gameQuestion">კითხვა</h2>
+
+    <div id="gameAnswers"></div>
+
+    <p id="feedback"></p>
+
+    <button id="nextButton" class="primary hidden" style="width:100%" onclick="nextQuestion()">
+        შემდეგი კითხვა →
+    </button>
+
+    <button class="secondary" style="width:100%;margin-top:15px" onclick="showPage('home')">
+        თამაშიდან გამოსვლა
+    </button>
+</section>
+
+<!-- შედეგების გვერდი -->
+<section id="results" class="card hidden center">
+
+    <h2>🏆 ქვიზი დასრულდა!</h2>
+    <p class="subtitle">აი შენი შედეგი:</p>
+
+    <div class="score" id="finalScore">0/0</div>
+
+    <h3 id="resultMessage"></h3>
+    <p id="percentage" class="subtitle"></p>
+
+    <div class="buttons" style="flex-direction:column">
+        <button class="green home-btn" onclick="startQuiz()">
+            🔄 თავიდან თამაში
+        </button>
+
+        <button class="primary home-btn" onclick="showPage('editor')">
+            ✏️ კითხვების შეცვლა
+        </button>
+
+        <button class="secondary home-btn" onclick="showPage('home')">
+            🏠 მთავარი გვერდი
+        </button>
+    </div>
+</section>
+
+</div>
 
 <script>
 
-// ციფრული საათი
-
-function updateClock() {
-    let now = new Date();
-
-    document.getElementById("time").textContent =
-        now.toLocaleTimeString("ka-GE");
-
-    document.getElementById("date").textContent =
-        now.toLocaleDateString("ka-GE");
-}
-
-updateClock();
-setInterval(updateClock, 1000);
-
-
-// ტექსტის გამეორება
-
-function repeatText() {
-
-    let value = document.getElementById("userInput").value;
-    let count = Number(document.getElementById("count").value);
-    let result = document.getElementById("result");
-
-    if (value.trim() === "") {
-        alert("გთხოვ, შეიყვანე ტექსტი!");
-        return;
-    }
-
-    if (!Number.isInteger(count) || count < 1 || count > 100) {
-        alert("შეიყვანე რიცხვი 1-დან 100-მდე!");
-        return;
-    }
-
-    result.innerHTML = "";
-
-    for (let i = 0; i < count; i++) {
-        let line = document.createElement("div");
-        line.className = "result-line";
-        line.textContent = value;
-        result.appendChild(line);
-    }
-
-    changeTextColor();
-    changeTextSize();
-
-    document.getElementById("message").textContent =
-        "წარმატებით დაიბეჭდა " + count + " ტექსტი! 🎉";
-}
-
-
-// Dark Mode
-
-function toggleDarkMode() {
-
-    document.body.classList.toggle("dark");
-
-    let button = document.getElementById("darkButton");
-
-    if (document.body.classList.contains("dark")) {
-        button.textContent = "☀️ Light Mode";
-    } else {
-        button.textContent = "🌙 Dark Mode";
-    }
-}
-
-
-// გასუფთავება
-
-function clearText() {
-
-    document.getElementById("result").innerHTML = "";
-    document.getElementById("userInput").value = "";
-    document.getElementById("count").value = "";
-    document.getElementById("message").textContent = "";
-}
-
-
-// ფერის შეცვლა
-
-function changeTextColor() {
-    let color = document.getElementById("textColor").value;
-    document.getElementById("result").style.color = color;
-}
-
-document.getElementById("textColor").addEventListener(
-    "input", changeTextColor
-);
-
-
-// ტექსტის ზომის შეცვლა
-
-function changeTextSize() {
-
-    let size = document.getElementById("textSize").value;
-
-    document.getElementById("result").style.fontSize = size + "px";
-    document.getElementById("sizeValue").textContent = size;
-}
-
-document.getElementById("textSize").addEventListener(
-    "input", changeTextSize
-);
-
-
-// ტექსტის კოპირება
-
-function copyText() {
-
-    let text = document.getElementById("result").innerText;
-
-    if (text === "") {
-        alert("ჯერ დაბეჭდე რაიმე ტექსტი!");
-        return;
-    }
-
-    navigator.clipboard.writeText(text)
-        .then(() => {
-            document.getElementById("message").textContent =
-                "ტექსტი დაკოპირდა! 📋";
-        })
-        .catch(() => {
-            alert("კოპირება ვერ მოხერხდა.");
-        });
-}
-
-
-// =================================
-// ქვიზის სისტემა
-// =================================
-
+// კითხვების შენახვა
 let questions = [];
+
+try {
+    questions = JSON.parse(localStorage.getItem("iosQuizQuestions")) || [];
+} catch (error) {
+    questions = [];
+}
+
+// თამაშის მონაცემები
 let currentQuestion = 0;
 let score = 0;
 let answered = false;
 
+// გვერდების შეცვლა
+function showPage(page) {
+    document.querySelectorAll(".card").forEach(section => {
+        section.classList.add("hidden");
+    });
 
-// კითხვის დამატება
+    document.getElementById(page).classList.remove("hidden");
 
+    if (page === "editor") {
+        displayQuestions();
+    }
+}
+
+// კითხვების შენახვა
+function saveQuestions() {
+    localStorage.setItem("iosQuizQuestions", JSON.stringify(questions));
+}
+
+// ახალი კითხვის დამატება
 function addQuestion() {
+    const question = document.getElementById("questionInput").value.trim();
 
-    let question = document.getElementById("questionInput").value.trim();
-
-    let answers = [
+    const answers = [
         document.getElementById("answerA").value.trim(),
         document.getElementById("answerB").value.trim(),
         document.getElementById("answerC").value.trim(),
         document.getElementById("answerD").value.trim()
     ];
 
-    let correct = Number(document.getElementById("correctAnswer").value);
+    const correct = Number(document.getElementById("correctAnswer").value);
 
-    if (question === "") {
-        alert("შეიყვანე კითხვა!");
-        return;
-    }
-
-    if (answers.some(answer => answer === "")) {
-        alert("შეავსე პასუხის ყველა ვარიანტი!");
+    if (!question || answers.some(answer => !answer)) {
+        alert("გთხოვ, შეავსე ყველა ველი!");
         return;
     }
 
@@ -537,6 +427,9 @@ function addQuestion() {
         correct: correct
     });
 
+    saveQuestions();
+    displayQuestions();
+
     document.getElementById("questionInput").value = "";
     document.getElementById("answerA").value = "";
     document.getElementById("answerB").value = "";
@@ -544,213 +437,193 @@ function addQuestion() {
     document.getElementById("answerD").value = "";
     document.getElementById("correctAnswer").value = "0";
 
-    updateQuestionList();
+    document.getElementById("questionInput").focus();
 }
 
+// კითხვების ჩვენება
+function displayQuestions() {
+    const list = document.getElementById("questionList");
 
-// კითხვების სიის განახლება
+    document.getElementById("questionCount").textContent = questions.length;
 
-function updateQuestionList() {
-
-    let list = document.getElementById("questionList");
     list.innerHTML = "";
 
-    document.getElementById("questionCount").textContent =
-        "დამატებულია " + questions.length + " კითხვა";
+    if (questions.length === 0) {
+        list.innerHTML = "<p class='subtitle'>ჯერ კითხვები არ დაგიმატებია.</p>";
+        return;
+    }
 
     questions.forEach((item, index) => {
+        const div = document.createElement("div");
+        div.className = "question-item";
 
-        let card = document.createElement("div");
-        card.className = "question-card";
-
-        let title = document.createElement("strong");
+        const title = document.createElement("p");
         title.textContent = (index + 1) + ". " + item.question;
+        div.appendChild(title);
 
-        let remove = document.createElement("button");
-        remove.textContent = "🗑️ კითხვის წაშლა";
-        remove.onclick = function() {
-            questions.splice(index, 1);
-            updateQuestionList();
-        };
+        const details = document.createElement("small");
 
-        card.appendChild(title);
-        card.appendChild(remove);
-        list.appendChild(card);
+        item.answers.forEach((answer, i) => {
+            const line = document.createElement("div");
+            line.textContent =
+                String.fromCharCode(65 + i) + ". " + answer +
+                (i === item.correct ? " ✓ სწორი პასუხი" : "");
+            details.appendChild(line);
+        });
+
+        div.appendChild(details);
+
+        const deleteButton = document.createElement("button");
+        deleteButton.className = "red";
+        deleteButton.textContent = "🗑 წაშლა";
+        deleteButton.onclick = () => deleteQuestion(index);
+
+        div.appendChild(deleteButton);
+        list.appendChild(div);
     });
 }
 
+// კითხვის წაშლა
+function deleteQuestion(index) {
+    if (confirm("ნამდვილად გინდა ამ კითხვის წაშლა?")) {
+        questions.splice(index, 1);
+        saveQuestions();
+        displayQuestions();
+    }
+}
 
-// ქვიზის დაწყება
-
+// თამაშის დაწყება
 function startQuiz() {
-
     if (questions.length === 0) {
-        alert("ჯერ დაამატე მინიმუმ ერთი კითხვა!");
+        alert("ჯერ ქვიზში კითხვები უნდა დაამატო!");
+        showPage("editor");
         return;
     }
 
     currentQuestion = 0;
     score = 0;
 
-    document.getElementById("creator").style.display = "none";
-    document.getElementById("game").style.display = "block";
-    document.getElementById("quizResult").style.display = "none";
-
-    showQuestion();
+    showPage("game");
+    displayQuestion();
 }
 
-
 // კითხვის ჩვენება
-
-function showQuestion() {
-
+function displayQuestion() {
     answered = false;
 
-    let item = questions[currentQuestion];
+    const item = questions[currentQuestion];
 
-    document.getElementById("progress").textContent =
+    document.getElementById("questionNumber").textContent =
         "კითხვა " + (currentQuestion + 1) + " / " + questions.length;
 
-    document.getElementById("gameQuestion").textContent =
-        item.question;
+    document.getElementById("scoreDisplay").textContent =
+        "ქულა: " + score;
+
+    document.getElementById("progressBar").style.width =
+        (currentQuestion / questions.length * 100) + "%";
+
+    document.getElementById("gameQuestion").textContent = item.question;
 
     document.getElementById("feedback").textContent = "";
+    document.getElementById("nextButton").classList.add("hidden");
 
-    document.getElementById("nextButton").style.display = "none";
-
-    let answersDiv = document.getElementById("gameAnswers");
+    const answersDiv = document.getElementById("gameAnswers");
     answersDiv.innerHTML = "";
 
     item.answers.forEach((answer, index) => {
-
-        let button = document.createElement("button");
-
-        button.className = "quiz-option";
+        const button = document.createElement("button");
+        button.className = "answer";
         button.textContent =
             String.fromCharCode(65 + index) + ". " + answer;
 
-        button.onclick = function() {
-            checkAnswer(index, button);
-        };
+        button.onclick = () => checkAnswer(index, button);
 
         answersDiv.appendChild(button);
     });
 }
 
-
 // პასუხის შემოწმება
-
 function checkAnswer(selected, selectedButton) {
-
     if (answered) return;
 
     answered = true;
 
-    let item = questions[currentQuestion];
-    let buttons = document.querySelectorAll(".quiz-option");
+    const item = questions[currentQuestion];
+    const buttons = document.querySelectorAll(".answer");
 
-    buttons.forEach(button => {
+    buttons.forEach((button, index) => {
         button.disabled = true;
+
+        if (index === item.correct) {
+            button.classList.add("correct");
+        }
     });
 
+    const feedback = document.getElementById("feedback");
+
     if (selected === item.correct) {
-
         score++;
-
-        document.getElementById("feedback").textContent =
-            "🎉 სწორია! ყოჩაღ!";
-
-        selectedButton.style.background = "#16a085";
-
+        feedback.textContent = "✓ სწორია! ყოჩაღ!";
+        feedback.style.color = "#4ade80";
     } else {
-
-        document.getElementById("feedback").textContent =
-            "❌ არასწორია! სწორი პასუხია: " +
-            item.answers[item.correct];
-
-        selectedButton.style.background = "#e74c3c";
-        buttons[item.correct].style.background = "#16a085";
+        selectedButton.classList.add("wrong");
+        feedback.textContent = "✗ არასწორია! მწვანედ მონიშნულია სწორი პასუხი.";
+        feedback.style.color = "#fca5a5";
     }
 
-    document.getElementById("nextButton").style.display = "block";
+    document.getElementById("scoreDisplay").textContent =
+        "ქულა: " + score;
+
+    document.getElementById("nextButton").classList.remove("hidden");
 
     if (currentQuestion === questions.length - 1) {
-        document.getElementById("nextButton").textContent =
-            "შედეგის ნახვა 🏆";
+        document.getElementById("nextButton").textContent = "შედეგების ნახვა 🏆";
     } else {
-        document.getElementById("nextButton").textContent =
-            "შემდეგი კითხვა ➡️";
+        document.getElementById("nextButton").textContent = "შემდეგი კითხვა →";
     }
 }
 
-
 // შემდეგი კითხვა
-
 function nextQuestion() {
-
     currentQuestion++;
 
     if (currentQuestion < questions.length) {
-        showQuestion();
+        displayQuestion();
     } else {
-        showResult();
+        showResults();
     }
 }
 
+// შედეგების ჩვენება
+function showResults() {
+    showPage("results");
 
-// შედეგის ჩვენება
+    const percentage = Math.round((score / questions.length) * 100);
 
-function showResult() {
+    document.getElementById("finalScore").textContent =
+        score + " / " + questions.length;
 
-    document.getElementById("game").style.display = "none";
-    document.getElementById("quizResult").style.display = "block";
-
-    let percentage = Math.round((score / questions.length) * 100);
-
-    document.getElementById("scoreText").textContent =
-        score + " / " + questions.length + " ქულა";
+    document.getElementById("percentage").textContent =
+        "სწორი პასუხები: " + percentage + "%";
 
     let message = "";
 
     if (percentage === 100) {
-        message = "🏆 იდეალურია! ყველა კითხვას სწორად უპასუხე!";
+        message = "შესანიშნავია! ყველა პასუხი სწორია! 🏆";
     } else if (percentage >= 70) {
-        message = "👏 ძალიან კარგი შედეგია!";
+        message = "ძალიან კარგი შედეგია! 👏";
     } else if (percentage >= 40) {
-        message = "👍 ცუდი არ არის, კიდევ სცადე!";
+        message = "კარგია! კიდევ ივარჯიშე! 💪";
     } else {
-        message = "💪 არ დანებდე! თავიდან სცადე!";
+        message = "არაუშავს, კიდევ სცადე! ❤️";
     }
 
-    document.getElementById("resultMessage").textContent =
-        message + " შენი შედეგია " + percentage + "%.";
+    document.getElementById("resultMessage").textContent = message;
 }
 
-
-// თავიდან თამაში
-
-function restartQuiz() {
-
-    currentQuestion = 0;
-    score = 0;
-
-    document.getElementById("quizResult").style.display = "none";
-    document.getElementById("game").style.display = "block";
-
-    showQuestion();
-}
-
-
-// კითხვების რედაქტირება
-
-function backToCreator() {
-
-    document.getElementById("quizResult").style.display = "none";
-    document.getElementById("game").style.display = "none";
-    document.getElementById("creator").style.display = "block";
-
-    updateQuestionList();
-}
+// საწყისი გვერდი
+displayQuestions();
+showPage("home");
 
 </script>
 
