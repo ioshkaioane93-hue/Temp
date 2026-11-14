@@ -1,0 +1,4 @@
+in git bush
+1) git add . (and enter)
+2) git commit -am "ra shecvale agwera mokle"
+3) git push (tu ar imushava: git push -u origin master)
